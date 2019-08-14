@@ -1,0 +1,34 @@
+<div style="text-align: center;">
+
+<h1>Event: "<%= @event.description %>"</h1>
+<p>
+  Place: <%= @event.place %><br />
+  Date: <%= @event.date.strftime("%d-%m-%Y") %><br />
+  Created by: <%= link_to @event.creator.name, user_path(@event.creator.id) %>
+</p>
+
+<h4>Participants</h4>
+<ul class="list-group">
+<% @event.attendees.each do |user| %>
+  <li class="list-group-item">
+    <%= link_to "#{user.name}", user_path(user) %>
+  
+    </li>
+<% end %>
+</ul>
+
+
+	<% if logged_in? && @event.attendees == @current_user %>
+		
+	
+	<% elsif logged_in? %>
+		<%= button_to 'Join this event',{}, class:'btn btn-default' %>
+	<% end %>
+
+
+
+<p>
+<%= button_to 'back', events_path, method: :get, class:'btn btn-default' %>
+</p>
+
+</div>

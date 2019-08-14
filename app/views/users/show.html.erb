@@ -1,0 +1,51 @@
+<div style="text-align: center;">
+
+    <h1> <%= @user.name %>#<%= @user.id %>'s profile</h1>
+
+
+    <% if logged_in? && @user == @current_user %>
+
+    <p><%= link_to 'Create a new event', events_new_path ,class: "btn btn-primary" %></p>
+
+
+
+    <% end %>
+
+    <h3>Created events list :</h3>
+<% @user.created_events.each do |event| %>
+
+   <tr>
+
+     <td><strong>Description :</strong><%= event.description %><br></td>
+
+     <td><strong>Date :</strong><%= event.date.strftime("%d-%m-%Y") %><br></td>
+
+     <td><strong>Place :</strong><%= event.place %></td>
+
+	</tr>
+
+	<br>
+	<hr>
+	<% end %>
+
+	    <h3>Event you're going to :</h3>
+
+<% @user.attended_events.each do |event| %>
+
+   <tr>
+
+     <td><strong>Description :</strong><%= event.description %><br></td>
+
+     <td><strong>Date :</strong><%= event.date.strftime("%d-%m-%Y") %><br></td>
+
+     <td><strong>Place :</strong><%= event.place %></td>
+
+	</tr>
+
+	<br>
+	<hr>
+	<% end %>
+
+</div>
+
+

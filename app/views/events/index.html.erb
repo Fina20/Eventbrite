@@ -1,0 +1,20 @@
+<div align="center", margin-top ="150px">
+
+<h3>All events list : </h3>
+
+<% Event.all.each do |event| %>
+
+   <tr>
+
+     <td><strong>Description :</strong><%= event.description %></td>
+
+     <td><%= link_to 'Show me!', event_path(event.id) %></td>
+     <td><%= link_to 'invite a friend' %></td>
+
+	</tr>
+
+	<br>
+	<hr>
+	<% end %>
+
+</div>
